@@ -37,7 +37,19 @@
     <hr />
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
+    <!--After you have your search handler above passing data to the view,-->
+    <!--you need to display the data.-->
+    <!--create a loop to display each job passed in from the controller.-->
+    <!--You should put each job in its own table, with one job field per row.-->
+    <!--Add the CSS class "job-listing" to each of the tables to get some nice-->
+    <!--styling, courtesy of Eliot's work!-->
 
+    <table th:fragment="j" class="job-listing" th:each="job : ${jobs}">  <!-- I sent an arraylist with a hashmap. get me the hashmap -->
+        <tr th:each="row,int : ${job}" >
+            <td th:text="${#strings.capitalizeWords(row.key)}"></td>
+            <td th:text="${#strings.capitalizeWords(row.value)}"></td>
+        </tr>
+    </table>
 </div>
 
 </body>
