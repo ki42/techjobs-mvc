@@ -43,13 +43,19 @@
     <!--You should put each job in its own table, with one job field per row.-->
     <!--Add the CSS class "job-listing" to each of the tables to get some nice-->
     <!--styling, courtesy of Eliot's work!-->
+    <div th:fragment="j">
 
-    <table th:fragment="j" class="job-listing" th:each="job : ${jobs}">  <!-- I sent an arraylist with a hashmap. get me the hashmap -->
-        <tr th:each="row,int : ${job}" >
+    <h2 th:if="${jobs}" th:text="${jobs.size() + ' Result(s)'}"></h2>
+      <!--  ${int itemCount = jobs.size()} -->
+
+
+        <table  class="job-listing" th:each="job : ${jobs}">  <!-- I sent an arraylist with a hashmap. get me the hashmap -->
+        <tr th:each="row,int : ${job}">
             <td th:text="${#strings.capitalizeWords(row.key)}"></td>
             <td th:text="${#strings.capitalizeWords(row.value)}"></td>
         </tr>
     </table>
+    </div>
 </div>
 
 </body>
